@@ -1,4 +1,5 @@
 # Atomic Unit Test
+## (aka "Atomic Confetti Bomb")
 A _very_ simple way of running [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team)'s Atomic Tests using Python!
 
 Set Up
