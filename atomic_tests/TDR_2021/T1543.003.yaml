@@ -1,0 +1,24 @@
+attack_technique: T1543.003
+display_name: 'Create or Modify System Process: Windows Service'
+atomic_tests:
+- name: Windows Service
+  auto_generated_guid: bd8695b4-fcf7-4f98-bc3b-4735f981166e
+  description: |
+    Windows Service made it into our top 10 thanks to a single threat: Blue Mockingbird, an activity cluster we identified that deploys Monero cryptocurrency-mining payloads and leverages Windows services for persistence.
+  supported_platforms:
+  - windows
+  input_arguments:
+    service_name:
+      description: Name of Service to create
+      type: string
+      default: CMDTestService
+    target_command:
+      description: Command for Service to execute
+      type: string
+      default: cmd /c date /T > C:\Windows\Temp\current_date.txt
+  executor:
+    command: |
+      sc create #{service_name} type=own binPath="#{target_command}"
+      sc delete #{service_name}
+    name: command_prompt
+    elevation_required: true

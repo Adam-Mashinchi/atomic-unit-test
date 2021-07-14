@@ -1,0 +1,23 @@
+attack_technique: TT1036.003
+display_name: 'Masquerading: Rename System Utilities'
+atomic_tests:
+- name: Rename System Utilities
+  auto_generated_guid: 72b187f1-05a0-4839-88f3-def9e437b350
+  description: |
+    A behavior that’s inherently suspicious in the context of one process can be completely normal in the context of another, which is precisely why adversaries rename system utilities to throw defenders off.
+  supported_platforms:
+  - windows
+  input_arguments:
+    new_file_location:
+      description: Where to put a copy of Powershell
+      type: string
+      default: C:\Windows\Temp\notepad.exe
+    encoded_command:
+      description: Powershell command to run
+      type: string
+      default: JgAgACgAZwBjAG0AIAAoACcAaQBlAHsAMAB9ACcAIAAtAGYAIAAnAHgAJwApACkAIAAoACIAVwByACIAKwAiAGkAdAAiACsAIgBlAC0ASAAiACsAIgBvAHMAdAAgACcASAAiACsAIgBlAGwAIgArACIAbABvACwAIABmAHIAIgArACIAbwBtACAAUAAiACsAIgBvAHcAIgArACIAZQByAFMAIgArACIAaAAiACsAIgBlAGwAbAAhACcAIgApAA==
+  executor:
+    command: |
+      copy C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe #{new_file_location}
+      #{new_file_location} -e #{encoded_command}
+    name: command_prompt

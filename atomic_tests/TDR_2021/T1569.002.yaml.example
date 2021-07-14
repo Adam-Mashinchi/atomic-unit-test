@@ -1,0 +1,25 @@
+attack_technique: T1569.002
+display_name: 'System Services: Service Execution'
+atomic_tests:
+- name: Service Execution
+  auto_generated_guid: 706d073c-4e4b-419b-9a86-fb0d32fc41bd
+  description: |
+    Adversaries use the Windows Service Manager to run commands or install or manipulate services, often with elevated privilege levels.
+  supported_platforms:
+  - windows
+  input_arguments:
+    service_name:
+      description: Name of Service to create
+      type: string
+      default: CMDTestService
+    target_command:
+      description: Command for Service to execute
+      type: string
+      default: cmd /c date /T > C:\Windows\Temp\current_date.txt
+  executor:
+    command: |
+      sc create #{service_name} type=own binPath="#{target_command}"
+      sc start #{service_name}
+      sc delete #{service_name}
+    name: command_prompt
+    elevation_required: true

@@ -1,0 +1,26 @@
+attack_technique: T1218.011
+display_name: 'Signed Binary Proxy Execution: Rundll32'
+atomic_tests:
+- name: Rundll32
+  auto_generated_guid: 3f262150-fac0-4e42-b00c-5fb720bc72c1
+  description: |
+    Adversaries use this native Windows process to execute malicious code through dynamic link libraries (DLL), often to bypass application controls.
+  supported_platforms:
+  - windows
+  input_arguments:
+    target_dll:
+      description: DLL to utilize
+      type: string
+      default: pcwutl.dll
+    entrypoint_name:
+      description: Entrypoint Name for Target DLL
+      type: string
+      default: LaunchApplication
+    target_exe:
+      description: EXE to Execute
+      type: string
+      default: C:\Windows\System32\notepad.exe
+  executor:
+    command: |
+      rundll32.exe #{target_dll},#{entrypoint_name} #{target_exe}
+    name: command_prompt

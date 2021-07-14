@@ -1,0 +1,43 @@
+attack_technique: T9902
+display_name: Test Technique 2
+atomic_tests:
+- name: Test Charlie
+  auto_generated_guid: 3ff64f0b-3af2-3866-339d-38d9791407c3
+  description: |
+    Placeholder description for Charlie.
+  supported_platforms:
+  - windows
+  input_arguments:
+    first_arg:
+      description: 1st argument
+      type: string
+      default: First_DEFAULT
+    second_arg:
+      description: 2nd arument
+      type: string
+      default: Second_DEFAULT
+  executor:
+    command: |
+      echo #{first_arg} #{second_arg}
+    name: command_prompt
+- name: Test Delta
+  auto_generated_guid: 32f90516-4bc9-43bd-b18d-2cbe0b7ca9b2
+  description: |
+    Placeholder description for Delta.
+  supported_platforms:
+  - windows
+  - macos
+  - linux
+  input_arguments:
+    first_arg:
+      description: 1st argument
+      type: string
+      default: default001
+    second_arg:
+      description: 2nd arument
+      type: string
+      default: default002
+  executor:
+    command: |
+      date
+    name: powershell

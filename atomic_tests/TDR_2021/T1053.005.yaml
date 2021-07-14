@@ -1,0 +1,23 @@
+attack_technique: T1053.005
+display_name: 'Scheduled Task/Job: Scheduled Task'
+atomic_tests:
+- name: Scheduled Task
+  auto_generated_guid: cd701b51-077b-4aff-8d38-609266d7e9ad
+  description: |
+    Leveraging the primary task-scheduling component of Windows, this technique allows adversarial persistence and execution behaviors to blend in with routine activity emanating from native tools and third-party software.
+  supported_platforms:
+  - windows
+  input_arguments:
+    task_name:
+      description: Name of Task to create
+      type: string
+      default: CMDTestTask
+    target_command:
+      description: Command for Service to execute
+      type: string
+      default: cmd /c date /T > C:\Windows\Temp\current_date.txt
+  executor:
+    command: |
+      schtasks /Create /F /SC MINUTE /MO 3 /ST 07:00 /TN #{task_name} /TR "#{target_command}"
+      schtasks /Delete /TN #{task_name} /F
+    name: command_prompt

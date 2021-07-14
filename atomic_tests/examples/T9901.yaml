@@ -1,0 +1,36 @@
+attack_technique: T9901
+display_name: Test Technique 1
+atomic_tests:
+- name: Test Alpha
+  auto_generated_guid: f7e6ec05-c19e-4a80-a7e7-241027992fdb
+  description: |
+    Placeholder description for Alpha.
+  supported_platforms:
+  - macos
+  - linux
+  - windows
+  input_arguments:
+    output_file:
+      description: file to output
+      type: string
+      default: the_output_file.txt
+    input_file:
+      description: file to input
+      type: string
+      default: the_input_file.json
+  executor:
+    command: |
+      echo #{input_file} #{output_file}
+    name: command_prompt
+- name: Test Beta
+  auto_generated_guid: 9d256c7b-c63a-4c04-81f6-8de06111b65e
+  description: |
+    Placeholder description for Beta.
+  supported_platforms:
+  - macos
+  - linux
+  - windows
+  executor:
+    command: |
+      time
+    name: command_prompt

