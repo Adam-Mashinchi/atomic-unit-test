@@ -10,6 +10,6 @@ python -m venv .\venv
 call ".\venv\Scripts\activate.bat"
 pip install -r requirements.txt
 @echo on
-python atomic-unit-test.py --atomics examples/TDR_2021 --verbose
+python atomic-unit-test.py --atomics atomic_tests\TDR_2021 --verbose
 cmd /k
 )
