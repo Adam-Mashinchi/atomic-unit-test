@@ -22,7 +22,7 @@ Example Usage
 ### Target a directory of YAML files, and see their output
 
 ```
-python atomic-unit-test.py --atomics examples/TDR_2021 --verbose
+python atomic-unit-test.py --atomics atomic_tests/TDR_2021 --verbose
 ```
 
 ### Run Tests, but use an external file for their `input_arguments`, and _only_ use Tests in that file
