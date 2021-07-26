@@ -1,4 +1,4 @@
-attack_technique: TT1036.003
+attack_technique: T1036.003
 display_name: 'Masquerading: Rename System Utilities'
 atomic_tests:
 - name: Rename System Utilities
