@@ -1,3 +1,10 @@
+---
+
+# PROJECT NO LONGER MAINTAINED!
+This project was ultimately a prototype for what ended up becoming [atomic-operator](https://github.com/swimlane/atomic-operator), which you should like use instead if you want greater functionality beyond what is provided here!
+
+---
+
 # Atomic Unit Test
 **(aka "Atomic Confetti Bomb")**
 
